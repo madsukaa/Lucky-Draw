@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <!-- <ion-toolbar>
+    <ion-title>
+      Lucky Draw
+    </ion-title>
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content [fullscreen]="true" id="background">
+  <div id="container">
+    <div *ngIf="datalucky == false">
+      <h1 class="focus-in-contract">Lucky Draw</h1>
+      <ion-textarea [(ngModel)]="name" required inputmode="ios" rows="10" placeholder="Please enter the draw name here. One name per line."></ion-textarea>
+      <ion-button id="drawbtn" expand="block" *ngIf="this.name != ''" (click)="start()">Draw</ion-button>
+      <ion-button id="drawbtn" expand="block" *ngIf="this.name == ''" disabled (click)="start()">Draw</ion-button>
+    </div>
+    <div *ngIf="datalucky == true">
+      <h1 *ngIf="winner == true" class="focus-in-contract">Winner</h1>
+      <h5 *ngIf="winner == false">{{test}}</h5>
+      <h5 *ngIf="winner == true">{{won}}</h5>
+      <ion-button id="homebtn" *ngIf="winner == true" expand="block" (click)="reset()">Home</ion-button>
+    </div>
+  </div>
+  <div class="pyro" *ngIf="winner == true">
+    <div class="before"></div>
+    <div class="after"></div>
+  </div>
+</ion-content>
